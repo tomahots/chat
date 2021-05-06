@@ -1,0 +1,4 @@
+<form action="#">
+    <input name="mensaje" [formControl]="mensaje" (keypress)="sendEnter($event)">
+    <button type="button" (click)="send()">Enviar</button>
+</form>

@@ -1,0 +1,10 @@
+<div class="contact" *ngFor="let contact of lista" (click)="showChats(contact)">
+    <img [src]="contact.photo">
+    {{contact.name}}
+    {{contact.lastMessage}}
+    <!--     <div *ngIf="chekToday(contact.lastdate)">{{contact.lastdate| date:'hh:mm a'}}</div>
+
+    <div *ngIf="chekYesterday(contact.lastdate)">Ayer</div>
+
+    <div *ngIf="Other(contact.lastdate)">otro dia</div> -->
+</div>
