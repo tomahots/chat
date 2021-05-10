@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WebsocketService } from '../websocket.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class SidebarComponent {
 
+  constructor(private servicio: WebsocketService) { }
   text = 'Hola mundo';
 
   saludar(): void {

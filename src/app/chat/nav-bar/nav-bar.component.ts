@@ -1,6 +1,7 @@
 import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from 'src/app/chat.service';
+import { WebsocketService } from 'src/app/websocket.service';
 
 @Component({
   selector: 'app-nav-bar',

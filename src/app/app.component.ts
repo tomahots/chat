@@ -1,6 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { WebsocketService } from './websocket.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class AppComponent implements AfterViewInit {
   title = 'chat';
+  constructor() { }
 
   ngAfterViewInit(): void {
 

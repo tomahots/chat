@@ -1,6 +1,7 @@
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from 'src/app/chat.service';
+import { WebsocketService } from 'src/app/websocket.service';
 
 
 @Component({
@@ -10,12 +11,25 @@ import { ChatService } from 'src/app/chat.service';
 })
 export class ListarChatComponent implements OnInit {
 
-  constructor(private service: ChatService) { }
+  constructor(private service: ChatService, private servicio: WebsocketService) { }
 
   fecha = new Date();
 
+  /*  contact = {
+     name: "Chat Grupo",
+     photo: 'https://ui-avatars.com/api/?background=random&size=200&bold=true&uppercase=true&name=Grupo',
+     lastMessage: 'lorem ipsum',
+     lastdate: new Date(),
+     messageslist: ['']
+   }; */
 
   lista = [
+    {
+      name: 'Grupo',
+      photo: 'https://ui-avatars.com/api/?background=random&size=200&bold=true&uppercase=true&name=Grupo',
+      lastdate: new Date(),
+      messageslist: ['']
+    },
     {
       name: 'Erick',
       photo: 'https://ui-avatars.com/api/?background=random&size=200&bold=true&uppercase=true&name=Erick',
@@ -79,6 +93,10 @@ export class ListarChatComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.servicio.onNewMessage().subscribe(msj => {
+
+    })
+
     this.service.showContact.subscribe(val3 => {
       this.namecontac = val3.name;
       /* console.log(this.namecontac); */
@@ -88,7 +106,8 @@ export class ListarChatComponent implements OnInit {
         /* console.log(this.namecontac + "este"); */
         if (this.namecontac == val.name) {
           this.service.messagelist.emit(val.messageslist);
-          val.messageslist.push(val2);
+          val.messageslist.push(val2.message);
+          val.name = val2.name;
           /* console.log(val2); */
         }
       })
